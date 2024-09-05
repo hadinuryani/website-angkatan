@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"\
+      
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>PENUGASAN WEBSITE</title>
+</head>
+<body>
+</div class="wrapper"> 
+<center><img src="DSC_9104-removebg-preview.png" alt="" class="photo"></center>
+<center><h1>BIODATA DIRI</h1></center>
+<table class="table"> 
+    <main>
+    <center><h1> MELY SUSANTIKA DEWI</h1></center>
+     <center><p>Saya merupakan seorang mahasiswa baru di Universitas Trunojoyo Madura 
+      atau di kenal dengan singkatan UTM fakultas Teknik prodi Teknik Informatika dengan NIM 240411100227.
+      Saya lahir di Pamekasan, 08 Agustus 2005, saya asli warga madura (WARLOG)
+      sedikit cerita sebenernya saya tidak ada niatan untuk kuliah awalnya, tapi seiring berjalannya waktu
+      demi orang tua saya usahakan
+      Kalian dapat menghubungi saya menggunakan nomor Whatsapp 081944995904</p></center>
+      <center><h1>ANGKATAN 2024</h1></center>
+     <!-- AWAL DARI BAGIAN ANGKATAN -->
+     <div class="angkatan" id="angkatan">
+     </div>
+     <!-- AKHIR DARI BAGIAN ANGKATAN -->
+     </main>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
+ 
+fetch('data.json')
+ .then(response => response.json())
+ .then(data => {
+     const angkatanDiv = document.getElementById('angkatan');
+
+     data.forEach(uwu => {
+         const card = document.createElement('div');
+         card.className = 'card';
+
+         const img = document.createElement('img');
+         img.src = uwu.fotoselfie;
+         img.className = 'card-img-top';
+         img.alt = uwu.nama;
+
+         const cardBody = document.createElement('div');
+         cardBody.className = 'card-body';
+
+         const cardTitle = document.createElement('h5');
+         cardTitle.className = 'card-title';
+         cardTitle.textContent = uwu.nama;
+
+         const cardText = document.createElement('p');
+         cardText.className = 'card-text';
+         cardText.innerHTML = `
+           <strong>NIM:</strong> ${uwu.nim}<br>
+           <strong>ALAMAT:</strong> ${uwu.alamat}<br>
+           <strong>TTL:</strong> ${uwu.ttl}<br>
+           <strong>NO:</strong> ${uwu.no}<br>
+           <strong>KELOMPOK:</strong> ${uwu.kelompok}
+         `;
+
+         cardBody.appendChild(cardTitle);
+         cardBody.appendChild(cardText);
+         card.appendChild(img);
+         card.appendChild(cardBody);
+         angkatanDiv.appendChild(card);
+     });
+ })
+ .catch(error => console.error('Error fetching data:', error));
+
+ </script>
+</body>
+</html>
